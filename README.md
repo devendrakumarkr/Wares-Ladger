@@ -56,11 +56,4 @@ Open the URL it prints (usually http://localhost:5173) in your browser.
    a `PUT` request when you hit Save. Clicking "Delete" sends a `DELETE`
    request after asking you to confirm.
 
-## Next steps if you want to learn more
 
-- Try adding a `description` field to a product — you'll need to add it to
-  the object shape in `server.js`, add an input for it in `App.jsx`, and show
-  it on the card.
-- Try swapping the in-memory array for a real database (like SQLite or
-  MongoDB) — the routes and the frontend won't need to change much, only the
-  code inside each route that reads/writes the data.
