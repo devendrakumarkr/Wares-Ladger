@@ -33,85 +33,30 @@ let nextId = 6;
 // (R)EAD — get the full list of products
 // Try it in your browser: http://localhost:5000/products
 app.get("/products", (req, res) => {
-  res.json(products);
+  
 });
 
 // (R)EAD — get ONE product by its id
 // Example: http://localhost:5000/products/2
 app.get("/products/:id", (req, res) => {
-  // req.params.id comes in as text, so we turn it into a number
-  const id = Number(req.params.id);
-
-  // .find() loops through the array and returns the first match
-  const product = products.find((p) => p.id === id);
-
-  if (!product) {
-    // 404 means "not found"
-    return res.status(404).json({ error: "Product not found" });
-  }
-
-  res.json(product);
+  
+  
 });
 
 // (C)REATE — add a brand new product
 // The frontend sends the new product's details in the request body
 app.post("/products", (req, res) => {
-  const { name, category, price, stock, color, rating } = req.body;
-
-  // Very basic validation — just check the important fields are there
-  if (!name || !category || price === undefined) {
-    return res.status(400).json({ error: "name, category, and price are required" });
-  }
-
-  const newProduct = {
-    id: nextId,
-    name: name,
-    category: category,
-    price: Number(price),
-    stock: stock ? Number(stock) : 0,
-    color: color || "#2B6E68", // default color if none was picked
-    rating: rating ? Number(rating) : 3 // default rating if none was picked
-  };
-
-  nextId = nextId + 1;         // get ready for the next product
-  products.push(newProduct);   // add it to our "database" array
-
-  // 201 means "created successfully"
-  res.status(201).json(newProduct);
+ 
 });
 
 // (U)PDATE — change an existing product
 app.put("/products/:id", (req, res) => {
-  const id = Number(req.params.id);
-  const product = products.find((p) => p.id === id);
-
-  if (!product) {
-    return res.status(404).json({ error: "Product not found" });
-  }
-
-  // Only update the fields that were actually sent
-  const { name, category, price, stock, color, rating } = req.body;
-  if (name !== undefined) product.name = name;
-  if (category !== undefined) product.category = category;
-  if (price !== undefined) product.price = Number(price);
-  if (stock !== undefined) product.stock = Number(stock);
-  if (color !== undefined) product.color = color;
-  if (rating !== undefined) product.rating = Number(rating);
-
-  res.json(product);
+  
 });
 
 // (D)ELETE — remove a product
 app.delete("/products/:id", (req, res) => {
-  const id = Number(req.params.id);
-  const index = products.findIndex((p) => p.id === id);
-
-  if (index === -1) {
-    return res.status(404).json({ error: "Product not found" });
-  }
-
-  products.splice(index, 1); // remove 1 item at that position
-  res.status(204).send();    // 204 means "success, nothing to send back"
+  
 });
 
 // --- Step 4: Start the server ---
