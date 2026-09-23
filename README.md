@@ -1,8 +1,5 @@
 # The Wares Ledger
 
-A beginner-friendly full-stack CRUD app. Everything is written in as few files
-as possible, with comments explaining what each part does — no advanced
-patterns, no separate router files, no modal popups.
 
 ## What's inside
 
